@@ -1,6 +1,4 @@
 import React from "react";
-import Header from "home/Header";
-import Footer from "home/Footer";
 import RelatedProducts from "./components/RelatedProducts";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -107,7 +105,7 @@ export default function PDPContent() {
         </ul>
       </div>
 
-      {/* <RelatedProducts /> */}
+      <RelatedProducts />
     </>
   );
 }

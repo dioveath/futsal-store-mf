@@ -4,7 +4,7 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 const deps = require("./package.json").dependencies;
 module.exports = (_, argv) => ({
   output: {
-    publicPath: "http://localhost:3000/",
+    publicPath: argv.mode === "development" ? "http://localhost:3000/" : "https://futsal-store-mf.vercel.app/",
   },
 
   resolve: {
@@ -51,13 +51,13 @@ module.exports = (_, argv) => ({
       name: "home",
       filename: "remoteEntry.js",
       remotes: {
-        pdp: "pdp@http://localhost:3001/remoteEntry.js",
-        auth: "auth@http://localhost:3002/remoteEntry.js",
+        pdp: "pdp@https://futsal-store-mf-pdp.vercel.app/remoteEntry.js",
+        auth: "auth@https://futsal-store-mf-auth.vercel.app/remoteEntry.js",
       },
       exposes: {
         "./Header": "./src/components/Header.jsx",
         "./Footer": "./src/components/Footer.jsx",
-        "./ProductCard": "./src/components/ProductCard.jsx",        
+        "./ProductCard": "./src/components/ProductCard.jsx",
       },
       shared: {
         ...deps,
